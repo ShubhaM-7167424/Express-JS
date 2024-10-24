@@ -1,0 +1,76 @@
+{
+  "email": "shubham@gmail.com",
+  "password": "singh"
+}
+======================================================
+shubham
+{
+  "message": "login successful",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1AZ21haWwuY29tIiwiaWF0IjoxNzIzNzA4MzQ5fQ.AWfb38UtviJLvuY0kHRtU6eQF0oMS122-GUTosnXxwE"
+}
+
+vijay
+{
+  "message": "login successful",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpamF5QGdtYWlsLmNvbSIsImlhdCI6MTcyMzcwODQxM30.1j3bs5aLfTWdttNqmMMT9tIUhlPQl6KaNYvwq6b04s8"
+}
+
+======================================================
+Authentication 
+======================================================
+
+1) when user do the registration => the hashed password is stored in the database
+2) when user do the login => now user filled password is matched with the hashed password of the database
+3) if the password is matched that means login is successful
+4) Now the server will generate a jwt token and send it back to the client
+
+
+======================================================
+Authorization
+======================================================
+
+5) when the user want to access any endpoint, we don't give access to the endpoint directly
+6) instead,  the request(contain jwt) is  passed to a middleware function
+7) if the token is verified , then user is allowed to access the endpoint 
+
+==================================================================================================
+
+JWT (JSON Web Token) is a way to securely send information between a server and a client 
+(like a web browser or mobile app). It’s used to verify that a user is who they say they are
+ and to authorize them to access certain resources.
+
+How JWT Works: ======
+
+Login: ===
+When you log in to a website or app, you provide your username and password.
+The server checks these details. If they’re correct, the server creates a JWT.
+
+Token Creation:=====
+
+The JWT is made up of three parts:=====
+Header: Contains information about the token, like the type of token (JWT) and the algorithm used to create it.
+Payload: Contains the user’s information, like their ID, and any other data the server wants to include.
+Signature: This is created by taking the header and payload, and then using a secret key to make sure the token can’t be tampered with.
+The JWT might look like this: xxxxx.yyyyy.zzzzz.
+
+Token Storage:======
+
+The server sends the JWT back to the client. The client stores this token, usually in local storage or a cookie.
+
+
+Using the Token:=========
+
+Whenever the client wants to access a protected resource (like viewing their profile), the client sends the JWT along with the
+request. The server checks the token to make sure it’s valid and hasn’t been changed.
+If it’s valid, the server allows access to the resource.
+
+Expiration:=======
+
+JWTs often have an expiration time. Once they expire, the client needs to log in again to get a new token.
+
+Summary:=========
+
+JWT is a secure way to verify a user’s identity.
+It’s created when a user logs in and is used for future requests to prove who they are.
+The token includes information about the user and is protected with a signature to ensure it can’t be tampered with.
+It’s stored on the client side and sent with each request to access secure resources.
